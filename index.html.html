@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greening Your Home</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Roboto', sans-serif; background-color: #f5f5dc; color: #333; line-height: 1.6; }
+    
+    /* Loading Screen Styles */
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #loading img {
+      width: 150px; 
+      height: auto;
+    }
+
+    /* Navbar Styles */
+    header { background-color: #283618; color: #fff; padding: 20px; text-align: center; }
+    .highlight { color: #ffb703; }
+    nav { display: flex; justify-content: center; background-color: #1F2A13; padding: 10px; }
+    nav ul { display: flex; list-style-type: none; }
+    nav li { position: relative; }
+    nav a { color: white; text-decoration: none; margin: 0 15px; padding: 10px 15px; transition: background 0.3s ease; }
+    nav a:hover { background-color: #003300; border-radius: 5px; }
+    .dropdown-content { display: none; position: absolute; background-color: #f9f9f9; min-width: 160px; z-index: 1; }
+    .dropdown-content a { color: black; padding: 12px 16px; text-decoration: none; display: block; }
+    .dropdown-content a:hover { background-color: #f1f1f1; }
+    nav li:hover .dropdown-content { display: block; }
+
+.hero {
+  background: url('https://www.sysmex-europe.com/fileadmin/_processed_/e/3/csm_Sustainability_Stage_March_2023_1500x600_702554531f.jpg') no-repeat center center/cover;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+
+
+    .hero h1 { font-size: 3.5em; font-weight: bold; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); }
+    .hero p { font-size: 1.5em; max-width: 700px; }
+
+    /* Section Styles */
+    section { padding: 50px 20px; max-width: 1200px; margin: 0 auto; }
+    .section-title { font-size: 2.5em; margin-bottom: 20px; text-align: center; color: #006400; }
+    .section p { font-size: 1.2em; margin-bottom: 20px; text-align: center; }
+
+    /* Card Styles */
+    .cards { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+    .card { background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; transition: transform 0.3s; width: 30%; text-align: center; }
+    .card img { width: 100%; height: 200px; object-fit: cover; }
+    .card h3 { background-color: #004d00; color: white; padding: 15px 0; font-size: 1.8em; }
+    .card p { padding: 15px; font-size: 1.1em; color: #555; }
+    .card:hover { transform: translateY(-10px); }
+
+    /* Calculator Section */
+    .calculator { margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 500px; text-align: left; }
+    .calculator select, .calculator button { padding: 10px; margin: 10px; width: 80%; border-radius: 5px; border: 1px solid #ddd; }
+    .calculator button { background-color: #006400; color: white; border: none; cursor: pointer; transition: background 0.3s ease; }
+    .calculator button:hover { background-color: #004d00; }
+
+    .hero-about {
+      background-color: #1d3f27; 
+      color: #f0f0f0; 
+      padding: 50px 20px; 
+      text-align: center; 
+    }
+
+    .about-title {
+      font-size: 2.5rem; 
+      margin-bottom: 20px; 
+      font-weight: bold;
+      color: #ffb703;
+    }
+
+    /* Contact Section */
+    .contact-section {  background: url('https://plantly.io/wp-content/uploads/2023/05/david-clode-abDPQtcEtUQ-unsplash.jpg') no-repeat center center/cover; padding: 50px 20px; }
+    form { background-color: white; padding: 30px; max-width: 600px; margin: 0 auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+    form input, form textarea { width: 100%; padding: 15px; margin: 10px 0; border-radius: 5px; border: 1px solid #ddd; }
+    form button { background-color: #1F2A13; color: white; padding: 15px; border: none; font-size: 1.2em; cursor: pointer; border-radius: 5px; transition: background 0.3s ease; }
+    form button:hover { background-color: #004d00; }
+
+    /* Footer */
+    footer { background-color: #1F2A13; color: white; text-align: center; padding: 20px; }
+    footer p { font-size: 1em; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5em; }
+      .cards { flex-direction: column; }
+      .card { width: 100%; }
+      .calculator { width: 100%; }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body onload="hideLoading()">
+
+<div id="loading">
+  <img src="C:\Users\RIYAN\Downloads\Eco Home Products Logo (1).png" alt="Loading Logo"> </div>
+
+<header>
+  <h1>Welcome to <span class="highlight">Greening Your Home</span></h1>
+  <p>Greening your home: The rise of sustainable home appliances</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li class="dropdown">
+      <a href="#energy">Smart Energy</a>
+      <div class="dropdown-content">
+        <a href="#calculator">Calculator</a>
+      </div>
+    </li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div>
+    <h1>Smart Appliances for a Greener Future</h1>
+    <p>Transform your home with sustainable technology.</p>
+  </div>
+</section>
+
+<section id="energy">
+  <h2 class="section-title">Smart Energy Solutions</h2>
+  <p>Implementing energy-efficient appliances in your home can greatly reduce energy consumption and contribute to a sustainable future.</p>
+  <div class="cards">
+    <div class="card">
+      <img src="https://thumbs.dreamstime.com/b/smart-thermostat-person-setting-up-temperature-smart-device-hand-hold-white-background-smart-thermostat-165171784.jpg" alt="Smart Thermostat">
+      <h3>Smart Thermostats</h3>
+      <p>Automatically regulate the temperature in your home, saving energy and reducing costs.</p>
+    </div>
+    <div class="card">
+      <img src="https://www.basonlight.com/cdn/shop/articles/smart-lighting-technology-BASON.jpg?v=1692590610" alt="Smart Lighting">
+      <h3>Smart Lighting</h3>
+      <p>Control lighting remotely and use energy-efficient bulbs to save power.</p>
+    </div>
+    <div class="card">
+      <img src="https://www.nrel.gov/grid/assets/images/solar-integration-cost-60066.jpg" alt="Solar Panels">
+      <h3>Solar Integration</h3>
+      <p>Install solar panels to harness renewable energy and lower your carbon footprint.</p>
+    </div>
+  </div>
+</section>
+
+<section id="calculator">
+  <h3 class="section-title" style="text-align: left;">Appliance Savings Calculator</h3>
+  <p>Select appliances to calculate your potential savings:</p>
+  <div class="calculator">
+    <label for="appliance">Choose an appliance:</label>
+    <select id="appliance" name="appliance">
+      <option value="solar">Solar Panels</option>
+      <option value="washing">Energy-Efficient Washing Machine</option>
+    </select>
+    <button onclick="calculateSavings()">Calculate Savings</button>
+    <p id="savingsResult"></p>
+  </div>
+</section>
+
+<section class="hero-about" id="about">
+  <h2 class="about-title">About Us</h2>
+  <p>At Greening Your Home, we are passionate about transforming the way we live by promoting sustainable living through innovative technology. Our mission is to empower homeowners with the knowledge and tools to make environmentally friendly choices.
+
+We believe that every small step counts towards creating a greener future. From smart energy solutions to eco-friendly appliances, we curate the best products and information to help you reduce your carbon footprint while enjoying a modern lifestyle. Our team of experts is dedicated to providing valuable insights, practical tips, and the latest trends in sustainable living.</p>
+</section>
+
+<section class="contact-section" id="contact">
+  <h2 class="section-title" style ="color: #ffb703;">Contact Us</h2>
+  <form action="#" method="post">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2024 Greening Your Home. All Rights Reserved.</p>
+</footer>
+
+<script>
+  function hideLoading() {
+    const loading = document.getElementById('loading');
+    setTimeout(() => {
+      loading.style.display = 'none';
+    }, 3000); // 3 seconds
+  }
+
+  function calculateSavings() {
+    const appliance = document.getElementById('appliance').value;
+    let savings = 0;
+
+    if (appliance === 'solar') {
+      savings = 200; // Example savings for solar panels
+    } else if (appliance === 'washing') {
+      savings = 100; // Example savings for energy-efficient washing machine
+    }
+
+    document.getElementById('savingsResult').innerText = `Estimated Savings: $${savings}`;
+  }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
